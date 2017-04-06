@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+ name: mysql-from-frontend
+spec:
+ podSelector:
+  matchLabels:
+    tier: mysql
+    app: wordpress
+ ingress:
+  - from:
+     - podSelector:
+        matchLabels:
+         tier: frontend
+         app: wordpress
+    ports:
+     - protocol: tcp
+       port: 3306

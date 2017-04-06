@@ -1,0 +1,14 @@
+---
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+ name: wordpress-from-any
+spec:
+ podSelector:
+   matchLabels:
+     tier: frontend
+     app: wordpress
+ ingress:
+  - ports:
+    - protocol: tcp
+      port: 80

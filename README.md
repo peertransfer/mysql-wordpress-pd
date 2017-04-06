@@ -35,10 +35,10 @@ kubectl create -f namespaces.yml
 kubectl create -f storage-class.yml
 kubectl create secret generic mysql-pass --from-file=password.txt -n dc1
 kubectl create secret generic mysql-pass --from-file=password.txt -n dc2
-kubectl create -f mysql-deployment.yaml -n dc1
-kubectl create -f mysql-deployment.yaml -n dc2
-kubectl create -f wordpress-deployment.yaml -n dc1
-kubectl create -f wordpress-deployment.yaml -n dc2
+kubectl create -f mysql-deployment.yml -n dc1
+kubectl create -f mysql-deployment.yml -n dc2
+kubectl create -f wordpress-deployment.yml -n dc1
+kubectl create -f wordpress-deployment.yml -n dc2
 kubectl annotate ns dc1 "net.beta.kubernetes.io/network-policy={\"ingress\": {\"isolation\": \"DefaultDeny\"}}"
 kubectl annotate ns dc2 "net.beta.kubernetes.io/network-policy={\"ingress\": {\"isolation\": \"DefaultDeny\"}}"
 kubectl apply -f mysql-from-frontend-network-policy.yml -n dc1
